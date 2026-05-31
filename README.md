@@ -9,7 +9,6 @@ Map any folder. Navigate, filter, annotate, and export it in 9 formats — from 
 
 <p>
   <a href="https://zsync.eu/zdirmap/"><img alt="Download" src="https://img.shields.io/badge/download-zsync.eu%2Fzdirmap-22d3ee?style=for-the-badge" /></a>
-  <a href="https://github.com/TheHolyOneZ/ZDirMap/releases"><img alt="Releases" src="https://img.shields.io/github/v/release/TheHolyOneZ/ZDirMap?style=for-the-badge&color=6366f1" /></a>
   <a href="https://www.gnu.org/licenses/gpl-3.0.html"><img alt="License" src="https://img.shields.io/badge/license-GPL--3.0-8b5cf6?style=for-the-badge" /></a>
 </p>
 
