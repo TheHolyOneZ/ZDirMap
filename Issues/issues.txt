@@ -1,0 +1,22 @@
+ISSUE #1 - MAC installer missing from Download page
+Author: BBfly1
+Opened: 2026-11-18
+Status: OPEN (fix implemented in v0.1.2, awaiting release)
+
+Body:
+  "MAC installer missing from Download page ..." (+ screenshot of the download page showing only Windows and Linux)
+
+Comments:
+  (none)
+
+Cause:
+  The README and website advertise macOS, but the repo had no CI workflow and
+  only Windows/Linux builds had ever been uploaded, so no .dmg existed.
+
+Reply (draft, post after release is published):
+  Thanks for reporting this, you're right. We only shipped Windows and Linux builds so far.
+  v0.1.2 adds a release workflow that builds macOS installers (.dmg for Apple Silicon and
+  Intel) and the download page at https://zsync.eu/zdirmap/ now lists them.
+  Note: the builds aren't code-signed/notarized, so on first launch right-click the app ->
+  Open (or allow it in System Settings -> Privacy & Security).
+  Closing as fixed in v0.1.2, please reopen if the macOS download still doesn't work for you.
