@@ -6,6 +6,8 @@ import Logo from "./common/Logo";
 import ThemeToggle from "./common/ThemeToggle";
 import AboutPanel from "./AboutPanel";
 
+const isMac = typeof navigator !== "undefined" && /mac/i.test(navigator.platform);
+
 export default function TitleBar() {
   const win = getCurrentWebviewWindow();
   const [aboutOpen, setAboutOpen] = useState(false);
@@ -43,8 +45,8 @@ export default function TitleBar() {
           <Info size={12} />
         </button>
         <ThemeToggle />
-        <div className="w-px h-4 mx-1" style={{ background: "var(--color-border)" }} />
-        {(
+        {!isMac && <div className="w-px h-4 mx-1" style={{ background: "var(--color-border)" }} />}
+        {!isMac && (
           [
             { label: "Minimize", action: () => win.minimize(), icon: <Minus size={11} />, close: false },
             { label: "Maximize", action: () => win.toggleMaximize(), icon: <Square size={10} />, close: false },

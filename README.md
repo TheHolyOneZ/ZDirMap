@@ -249,6 +249,9 @@ Save a set of glob patterns as a named preset. Patterns match per-path-component
 | macOS    | `.dmg` (Apple Silicon + Intel) |
 | Linux    | `.AppImage`, `.deb`, `.rpm` |
 
+> [!NOTE]
+> **macOS:** a `.dmg` is a disk image, not an installer. Open it, then drag **ZDirMap** onto the **Applications** folder in the same window, eject the disk image, and start ZDirMap from Applications or Launchpad. The app is not code-signed, so the first time right-click it, choose **Open**, then confirm.
+
 ---
 
 ## 🛠️ Build from source

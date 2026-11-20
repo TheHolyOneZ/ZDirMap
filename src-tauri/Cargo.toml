@@ -1,6 +1,6 @@
 [package]
 name = "zdirmap"
-version = "0.1.2"
+version = "0.1.3"
 description = "ZDirMap — Directory mapping & tree visualization"
 authors = []
 edition = "2021"

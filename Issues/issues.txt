@@ -1,22 +1,41 @@
 ISSUE #1 - MAC installer missing from Download page
 Author: BBfly1
 Opened: 2026-11-18
-Status: OPEN (fix implemented in v0.1.2, awaiting release)
+Status: CLOSED (v0.1.2 added the macOS builds; follow-up window fix in v0.1.3, awaiting release publish)
 
 Body:
   "MAC installer missing from Download page ..." (+ screenshot of the download page showing only Windows and Linux)
 
-Comments:
-  (none)
+Comment 1 (BBfly1, 2026-11-19):
+  "I was able to open, but it did not install like a regular app ... it appears as only a desktop icon. I double-clicked the icon and a window opened on my other monitor screen and showed me the .app file. I right-clicked and selected <Open> and it opened the app window on the built-in screen larger than the actual screen rather than on other monitor I was using. I was unable to manipulate the window size. It appears to have a fixed app window size and I could not manipulate it (re-size or move). I was able to select 'ZDirMap/Quit ZDirMap' to exit cleanly though. [...] MacBook Pro 15", 2019 with an Intel I9 cpu."
 
-Cause:
-  The README and website advertise macOS, but the repo had no CI workflow and
-  only Windows/Linux builds had ever been uploaded, so no .dmg existed.
+Analysis:
+  Part 1 (not a bug): on macOS a .dmg is a disk image, not an installer. He ran the app directly from the
+  mounted disk image, so nothing was installed. The window "showing the .app file" was the disk image itself.
+  Part 2 (real bug): the window was fixed at 1480x940 with a custom titlebar and custom resize edges. On a
+  15" MacBook Pro (default ~1440x900) it opened larger than the screen, so the titlebar and edges were off-screen
+  and it could not be moved or resized.
+  Fix in v0.1.3: window size is clamped to the monitor it opens on and centered there; on macOS the native
+  titlebar (move, resize, traffic-light buttons) is used instead of the custom one. README has macOS install steps.
 
-Reply (draft, post after release is published):
-  Thanks for reporting this, you're right. We only shipped Windows and Linux builds so far.
-  v0.1.2 adds a release workflow that builds macOS installers (.dmg for Apple Silicon and
-  Intel) and the download page at https://zsync.eu/zdirmap/ now lists them.
-  Note: the builds aren't code-signed/notarized, so on first launch right-click the app ->
-  Open (or allow it in System Settings -> Privacy & Security).
-  Closing as fixed in v0.1.2, please reopen if the macOS download still doesn't work for you.
+Reply (draft, post after the v0.1.3 release is published):
+  Hi bb, thanks for the detailed feedback and for trying it on your Mac!
+
+  First, about the install: a .dmg is not an installer, it's a "disk image", basically a virtual USB stick
+  that macOS mounts and shows as a window or desktop icon. What you double-clicked was that mounted disk, and
+  the window you saw with the .app inside is simply its contents. Running the app from there means it runs
+  directly off the disk image, so nothing gets installed. That is normal for Mac apps and not something you
+  did wrong in a big way, it's just that the last step is manual:
+    1. Open the .dmg
+    2. Drag ZDirMap onto the "Applications" folder shown in that window
+    3. Eject the disk image (right-click its desktop icon -> Eject)
+    4. Start ZDirMap from Applications or Launchpad
+  Because the app isn't code-signed, the first launch needs right-click -> Open (which you already found).
+
+  Second, the window problem was a real bug on our side, thank you for reporting it. The window had a fixed
+  size of 1480x940 and its own custom title bar, which on a MacBook screen ended up bigger than the display
+  and couldn't be moved or resized. v0.1.3 fixes this: the window now fits the screen it opens on, and on
+  macOS it uses the normal native title bar so moving and resizing work like any other Mac app.
+  Download: https://zsync.eu/zdirmap/
+
+  Please let us know if anything is still off on your Mac.

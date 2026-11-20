@@ -62,7 +62,7 @@ export default function AboutPanel({ open, onClose }: Props) {
                     ZDirMap
                   </span>
                   <span className="text-[10px] mono" style={{ color: "var(--color-text-subtle)" }}>
-                    v0.1.2 · the go-to directory tree tool
+                    v0.1.3 · the go-to directory tree tool
                   </span>
                 </div>
               </div>

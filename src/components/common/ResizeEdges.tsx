@@ -15,7 +15,10 @@ const DIRS: Array<{ d: Dir; style: React.CSSProperties; cursor: string }> = [
   { d: "SouthEast", style: { bottom: 0, right: 0, width: 8, height: 8 }, cursor: "nwse-resize" },
 ];
 
+const isMac = typeof navigator !== "undefined" && /mac/i.test(navigator.platform);
+
 export default function ResizeEdges() {
+  if (isMac) return null;
   const onStart = async (d: Dir, e: React.MouseEvent) => {
     if (e.button !== 0) return;
     e.preventDefault();
